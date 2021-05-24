@@ -34,17 +34,17 @@ export const searchMovie = async (searchQuery) => {
       res.data;
 
     const moviesData = {
-      Poster,
-      Title,
-      Year,
-      Runtime,
-      Genre,
-      Director,
-      Actors,
-      Plot,
+      poster: Poster,
+      title: Title,
+      year: Year,
+      runtime: Runtime,
+      genre: Genre,
+      director: Director,
+      actors: Actors,
+      plot: Plot,
     };
 
-    if(!moviesData.Title) {
+    if(!moviesData.title) {
       return {
         status: false,
         error: 'No movie found',

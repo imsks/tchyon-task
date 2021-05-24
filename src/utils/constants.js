@@ -1,37 +1,22 @@
-export const SORT_BY_OPTIONS = [
+export const NAVBAR_LINK_ITEMS = [
   {
-    label: "Position",
-    value: "position",
+    label: "Home",
+    route: "/",
   },
   {
-    label: "Location",
-    value: "location",
+    label: "About",
+    route: "/",
   },
   {
-    label: "Department",
-    value: "department",
-  },
-];
-
-export const INPUT_FIELD_TYPES = [
-  {
-    label: "Text",
-    value: "text",
+    label: "Blog",
+    route: "/",
   },
   {
-    label: "Number",
-    value: "number",
+    label: "Marketplace",
+    route: "/",
   },
   {
-    label: "Password",
-    value: "password",
+    label: "Become A Partner",
+    route: "/",
   },
 ];
-
-export const selectStyles = {
-  control: (base) => ({
-    ...base,
-    border: "2px solid black",
-    boxShadow: "none",
-  }),
-};

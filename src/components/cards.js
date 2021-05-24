@@ -1,61 +1,43 @@
-export const MovieCardContainer = (movieData) => {
-  // console.log(movieData)
+export const MovieCardContainer = ({ movieData }) => {
+  const { poster, title, year, runtime, genre, director, actors, plot } =
+    movieData;
 
   return (
     <div className="cards">
-      {/* {moviesData.map((movieData, key) => {
-        const {
-          poster,
-          title,
-          year,
-          runtime,
-          genre,
-          directedBy,
-          actedBy,
-          plot,
-          rating,
-        } = movieData;
-
-        return (
-          <MovieCard
-            key={key}
-            poster={poster}
-            title={title}
-            year={year}
-            runtime={runtime}
-            genre={genre}
-            directedBy={directedBy}
-            actedBy={actedBy}
-            plot={plot}
-            rating={rating}
+      <div className="cards__item">
+        <div className="cards__item__content">
+          <img
+            src={poster}
+            className="cards__item__content__image"
+            alt="movie-poster"
           />
-        );
-      })} */}
-    </div>
-  );
-};
-
-export const MovieCard = ({
-  poster,
-  title,
-  year,
-  runtime,
-  genre,
-  directedBy,
-  actedBy,
-  plot,
-  rating,
-}) => {
-  return (
-    <div className="cards__item">
-      <div className="cards__item__content">
-        <div className="cards__item__content__section">
-          <h3 className="cards__item__content__heading">{title}</h3>
-          <h5 className="cards__item__content__subheading">{year}</h5>
-        </div>
-        <div className="cards__item__content__section">
-          <p className="cards__item__content__paragraph">{runtime}</p>
-          <p className="cards__item__content__paragraph">{genre}</p>
+          <div className="cards__item__content__main">
+            <div className="cards__item__content__section">
+              <h3 className="cards__item__content__heading">{title}</h3>
+              <h5 className="cards__item__content__subheading">{year}</h5>
+            </div>
+            <div className="cards__item__content__section">
+              <h5 className="cards__item__content__subheading">
+                Directed by {director}
+              </h5>
+            </div>
+            <div className="cards__item__content__section">
+              <h5 className="cards__item__content__subheading">
+                Actors {actors}
+              </h5>
+            </div>
+            <div className="cards__item__content__section">
+              <h3 className="cards__item__content__subheading">
+                Runtime - {runtime}
+              </h3>
+              <h5 className="cards__item__content__subheading">
+                Genre - {genre}
+              </h5>
+            </div>
+            <div className="cards__item__content__section">
+              <p className="cards__item__content__paragraph">{plot}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

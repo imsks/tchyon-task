@@ -31,6 +31,20 @@
         gap: 2rem;
         grid-template-columns: none;
       }
+
+      &__error {
+        display: flex;
+        justify-content: center;
+      }
+
+      &__status {
+        display: flex;
+        justify-content: center;
+        margin: 1rem 0;
+        color: $color-black;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
     }
   }
 }

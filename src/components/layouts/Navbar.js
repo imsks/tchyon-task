@@ -1,3 +1,5 @@
+import { NAVBAR_LINK_ITEMS } from "../../utils/constants";
+
 const Navbar = () => {
   return (
     <nav className="navbar">
@@ -7,7 +9,15 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar__links">
-        <a href="/">Create survey</a>
+        {NAVBAR_LINK_ITEMS.map((navLink, key) => {
+          const { label, route } = navLink;
+
+          return (
+            <a href={route} className="navbar__links__item" key={key}>
+              {label}
+            </a>
+          );
+        })}
       </div>
     </nav>
   );
