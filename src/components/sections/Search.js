@@ -10,7 +10,6 @@ export const SearchMovieContainer = () => {
 
   const onHandleMovieSearch = (event) => {
     event.preventDefault();
-    
     const searchQuery = event.target.value;
     setErrorMessage(null);
 
