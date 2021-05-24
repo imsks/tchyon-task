@@ -18,6 +18,13 @@ const Navbar = () => {
             </a>
           );
         })}
+        <div className="navbar__profile">
+          <img
+            src="https://p.imgci.com/db/PICTURES/CMS/128400/128483.1.jpg"
+            alt="navbar-profile" className="navbar__profile__image"
+          />
+          <p className="paragraph navbar__profile__text">Sachin</p>
+        </div>
       </div>
     </nav>
   );

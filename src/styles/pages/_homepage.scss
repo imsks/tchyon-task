@@ -32,6 +32,21 @@
         grid-template-columns: none;
       }
 
+      &__search {
+        display: flex;
+        padding: 2rem;
+        overflow: hidden;
+
+        &__item {
+          font-size: 1.8rem;
+          font-weight: 600;
+
+          &:not(:first-child) {
+            margin: 0 0 0 1rem;
+          }
+        }
+      }
+
       &__error {
         display: flex;
         justify-content: center;
