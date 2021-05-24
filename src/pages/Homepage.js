@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import PageHeader from "../components/PageHeader";
-import { MovieCardContainer } from "../components/cards";
 import { SearchMovieContainer } from "../components/sections/Search";
 
 const Homepage = () => {
-  const [moviesData, setMoviesData] = useState([]);
-
   return (
     <div className="page">
       <div className="page__container">
@@ -18,8 +15,6 @@ const Homepage = () => {
               />
 
               <SearchMovieContainer />
-
-              <MovieCardContainer moviesData={moviesData} />
             </div>
           </div>
         </div>

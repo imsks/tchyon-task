@@ -1,7 +1,9 @@
-export const MovieCardContainer = ({ moviesData }) => {
+export const MovieCardContainer = (movieData) => {
+  // console.log(movieData)
+
   return (
     <div className="cards">
-      {moviesData.map((movieData, key) => {
+      {/* {moviesData.map((movieData, key) => {
         const {
           poster,
           title,
@@ -28,7 +30,7 @@ export const MovieCardContainer = ({ moviesData }) => {
             rating={rating}
           />
         );
-      })}
+      })} */}
     </div>
   );
 };

@@ -1,66 +1,64 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
-let isScheduelMeetingSuccess = false;
+export const debounceFunction = (callbackFunction, timeDelay) => {
+  let debounce;
 
-export const handleScheduelMeeting = (event) => {
-  event.preventDefault();
+  return function () {
+    const callbackArguments = arguments;
 
-  if (isScheduelMeetingSuccess) {
-    isScheduelMeetingSuccess = !isScheduelMeetingSuccess;
-    return toastError("Slot not available!");
+    clearTimeout(debounce);
+
+    debounce = setTimeout(
+      () => callbackFunction.apply(this, callbackArguments),
+      timeDelay
+    );
+  };
+};
+
+export const handleMovieSearch = (event) => {
+  const searchQuery = event.target.value;
+
+  // Hit API if query length > 3
+  if (searchQuery.length > 3) {
+    return debounceFunction(() => searchMovie(searchQuery), 2000)();
   }
-
-  isScheduelMeetingSuccess = !isScheduelMeetingSuccess;
-
-  return toastSuccess("Slot booked!");
 };
 
-export const toastError = (message) => {
-  return toast.error(message, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-  });
-};
+export const searchMovie = async (searchQuery) => {
+  try {
+    const res = await axios({
+      method: "get",
+      url: `${process.env.REACT_APP_OMDB_API_URL}&t=${searchQuery}`,
+    });
+    const { Poster, Title, Year, Runtime, Genre, Director, Actors, Plot } =
+      res.data;
 
-export const toastSuccess = (message) => {
-  return toast.success(message, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: true,
-    closeOnClick: true,
-  });
-};
+    const moviesData = {
+      Poster,
+      Title,
+      Year,
+      Runtime,
+      Genre,
+      Director,
+      Actors,
+      Plot,
+    };
 
-export const handleSortBy = (sortBy, selectedData, employeesData) => {
-  const { label } = selectedData;
+    if(!moviesData.Title) {
+      return {
+        status: false,
+        error: 'No movie found',
+      };
+    }
 
-  let filteredData;
-
-  switch (sortBy) {
-    case "location":
-      filteredData = employeesData.filter(
-        (employeeData) => employeeData.location === label
-      );
-      break;
-
-    case "position":
-      filteredData = employeesData.filter(
-        (employeeData) => employeeData.position === label
-      );
-      break;
-
-    case "department":
-      filteredData = employeesData.filter(
-        (employeeData) => employeeData.department === label
-      );
-      break;
-
-    default:
-      break;
+    return {
+      status: true,
+      moviesData,
+    };
+  } catch (error) {
+    return {
+      status: true,
+      error: error.message,
+    };
   }
-
-  return filteredData;
 };
